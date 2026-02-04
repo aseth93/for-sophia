@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        .card {
+            background: white;
+            border-radius: 30px;
+            padding: 50px 60px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .cat {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .cat-face {
+            width: 100px;
+            height: 90px;
+            background: #f4a460;
+            border-radius: 50%;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .ear {
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-bottom: 35px solid #f4a460;
+            position: absolute;
+            top: -20px;
+        }
+
+        .ear-left {
+            left: 5px;
+            transform: rotate(-15deg);
+        }
+
+        .ear-right {
+            right: 5px;
+            transform: rotate(15deg);
+        }
+
+        .eye {
+            width: 10px;
+            height: 10px;
+            background: #333;
+            border-radius: 50%;
+            position: absolute;
+            top: 35px;
+        }
+
+        .eye-left {
+            left: 28px;
+        }
+
+        .eye-right {
+            right: 28px;
+        }
+
+        .nose {
+            width: 12px;
+            height: 10px;
+            background: #e91e63;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .heart {
+            position: absolute;
+            top: -5px;
+            right: -10px;
+            font-size: 35px;
+            animation: pulse 1s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .question {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 35px;
+            font-weight: 400;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            min-height: 80px;
+            position: relative;
+        }
+
+        .btn-yes {
+            background: linear-gradient(135deg, #ec407a 0%, #e91e63 100%);
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            font-size: 22px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: 600;
+        }
+
+        .btn-yes:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 20px rgba(233, 30, 99, 0.4);
+        }
+
+        .btn-no {
+            background: #e0e0e0;
+            color: #666;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.1s;
+            position: absolute;
+            right: 20px;
+        }
+
+        .shy-text {
+            margin-top: 25px;
+            color: #999;
+            font-size: 14px;
+        }
+
+        .celebration {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 1000;
+        }
+
+        .celebration.active {
+            display: flex;
+        }
+
+        .celebration h1 {
+            font-size: 48px;
+            color: #e91e63;
+            margin-bottom: 20px;
+            animation: bounce 0.5s ease infinite;
+        }
+
+        .celebration .hearts {
+            font-size: 60px;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .confetti {
+            position: fixed;
+            width: 15px;
+            height: 15px;
+            top: -20px;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to {
+                top: 100vh;
+                transform: rotate(720deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="cat">
+            <div class="cat-face">
+                <div class="ear ear-left"></div>
+                <div class="ear ear-right"></div>
+                <div class="eye eye-left"></div>
+                <div class="eye eye-right"></div>
+                <div class="nose"></div>
+            </div>
+            <div class="heart">&#x1F497;</div>
+        </div>
+
+        <p class="question">sophia will you be my valentine?</p>
+
+        <div class="buttons">
+            <button class="btn-yes" onclick="sayYes()">Yes</button>
+            <button class="btn-no" id="noBtn">No</button>
+        </div>
+
+        <p class="shy-text">"No" seems a bit shy &#x1F431;</p>
+    </div>
+
+    <div class="celebration" id="celebration">
+        <h1>Yay! I love you! &#x1F970;</h1>
+        <div class="hearts">&#x1F495; &#x1F496; &#x1F495;</div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const card = document.querySelector('.card');
+
+        function moveButton() {
+            const cardRect = card.getBoundingClientRect();
+            const btnRect = noBtn.getBoundingClientRect();
+
+            // Calculate available space within the card
+            const maxX = cardRect.width - btnRect.width - 40;
+            const maxY = 150;
+
+            // Generate random position
+            let newX = Math.random() * maxX - maxX/2;
+            let newY = Math.random() * maxY - 30;
+
+            noBtn.style.transform = `translate(${newX}px, ${newY}px)`;
+        }
+
+        noBtn.addEventListener('mouseenter', moveButton);
+        noBtn.addEventListener('touchstart', moveButton);
+        noBtn.addEventListener('click', moveButton);
+
+        function sayYes() {
+            document.getElementById('celebration').classList.add('active');
+            createConfetti();
+        }
+
+        function createConfetti() {
+            const colors = ['#e91e63', '#ff4081', '#f48fb1', '#ff80ab', '#ff1744', '#f50057'];
+
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    document.body.appendChild(confetti);
+
+                    setTimeout(() => confetti.remove(), 4000);
+                }, i * 30);
+            }
+        }
+    </script>
+</body>
+</html>
