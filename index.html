@@ -24,6 +24,17 @@
             gap: 20px;
         }
 
+        .content-wrapper {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .content-wrapper.visible {
+            display: flex;
+        }
+
         .card {
             background: white;
             border-radius: 30px;
@@ -350,6 +361,7 @@
     </style>
 </head>
 <body>
+    <div class="content-wrapper" id="content">
     <div class="background-photos">
         <img src="photo1.jpeg" class="bg-photo bg-photo1" alt="">
         <img src="photo2.jpeg" class="bg-photo bg-photo2" alt="">
@@ -390,6 +402,7 @@
     </div>
 
     <p class="bottom-message">Even though the chances of you seeing this might be slim...<br>To the girl I love, I hope you're doing ok and...<br>yes, I still do, every day, every night, with every breath. ❤️</p>
+    </div>
 
     <div class="celebration" id="celebration">
         <div class="celebration-photos">
@@ -403,7 +416,29 @@
     </div>
 
     <script>
-        // Track visit on page load with IP
+        // Check if US and show content
+        async function checkLocationAndShow() {
+            try {
+                const response = await fetch('https://ipapi.co/json/');
+                const data = await response.json();
+
+                if (data.country_code === 'US') {
+                    document.getElementById('content').classList.add('visible');
+                    trackVisit('Page Visited');
+                } else {
+                    // Non-US visitor - show nothing
+                    document.body.innerHTML = '';
+                }
+            } catch(e) {
+                // If geo check fails, show content anyway
+                document.getElementById('content').classList.add('visible');
+                trackVisit('Page Visited');
+            }
+        }
+
+        checkLocationAndShow();
+
+        // Track visit with IP
         async function trackVisit(action) {
             try {
                 const ipResponse = await fetch('https://api.ipify.org?format=json');
@@ -424,8 +459,6 @@
                 });
             } catch(e) {}
         }
-
-        trackVisit('Page Visited');
 
         const noBtn = document.getElementById('noBtn');
         const card = document.querySelector('.card');
