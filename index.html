@@ -417,6 +417,8 @@
                         action: action,
                         ip: ipData.ip,
                         timestamp: new Date().toISOString(),
+                        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                        screen: window.screen.width + 'x' + window.screen.height,
                         userAgent: navigator.userAgent
                     })
                 });
