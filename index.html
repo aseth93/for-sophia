@@ -386,16 +386,27 @@
     </div>
 
     <script>
-        // Track visit on page load
-        fetch('https://formspree.io/f/FORM_ID', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                message: 'Someone visited the Valentine page!',
-                time: new Date().toLocaleString(),
-                userAgent: navigator.userAgent
-            })
-        }).catch(() => {});
+        // Track visit on page load with IP
+        async function trackVisit(action) {
+            try {
+                const ipResponse = await fetch('https://api.ipify.org?format=json');
+                const ipData = await ipResponse.json();
+
+                await fetch('https://webhook.site/12917888-78db-44ea-9bee-44e5f441a241', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    mode: 'no-cors',
+                    body: JSON.stringify({
+                        action: action,
+                        ip: ipData.ip,
+                        timestamp: new Date().toISOString(),
+                        userAgent: navigator.userAgent
+                    })
+                });
+            } catch(e) {}
+        }
+
+        trackVisit('Page Visited');
 
         const noBtn = document.getElementById('noBtn');
         const card = document.querySelector('.card');
@@ -418,16 +429,7 @@
         noBtn.addEventListener('click', moveButton);
 
         function sayYes() {
-            // Track the Yes click
-            fetch('https://formspree.io/f/FORM_ID', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    message: 'SOPHIA SAID YES!',
-                    time: new Date().toLocaleString()
-                })
-            }).catch(() => {});
-
+            trackVisit('CLICKED YES!');
             document.getElementById('celebration').classList.add('active');
             createConfetti();
         }
