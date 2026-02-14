@@ -88,7 +88,7 @@
 
         .tap-to-start {
             font-size: 15px;
-            color: rgba(255,255,255,0.25);
+            color: #ffffff;
             animation: breathe 2.5s ease-in-out infinite;
             cursor: pointer;
             padding: 40px;
@@ -278,10 +278,10 @@
 
             <!-- Slide 0: Quote -->
             <div class="slide quote-slide active" id="slide0">
-                <div class="tap-to-start" id="tapToStart">tap to begin</div>
+                <div class="tap-to-start" id="tapToStart" onclick="startExperience()" style="text-align:center;">tap to begin<br><span style="font-size:24px;display:block;margin-top:8px;">&#128266;</span></div>
                 <div class="quote-content" id="quoteContent" style="display:none;">
                     <p class="quote-greeting">hey sophia,</p>
-                    <p class="quote-text">&ldquo;I don&rsquo;t technically have a hearing problem, but sometimes in the past when I&rsquo;m too focused on one thing, everything else becomes a jumble. Again, it&rsquo;s not that I can&rsquo;t hear, because that&rsquo;s false. I can. I just wasn&rsquo;t good at distinguishing between what actually mattered the most and what didn&rsquo;t.&rdquo;</p>
+                    <p class="quote-text">I don't technically have a hearing problem, but sometimes in the past when I'm too focused on one thing, everything else becomes a jumble. Again, it's not that I can't hear, because that's false. I can. I just wasn't good at distinguishing between what actually mattered the most and what didn't.</p>
                     <video id="nateAudio" class="quote-audio" src="nate.mp4" playsinline preload="auto" loop></video>
                     <button class="continue-btn quote-continue" onclick="nextSlide()">continue &#8250;</button>
                 </div>
@@ -289,8 +289,8 @@
 
             <!-- Slide 1: Apology -->
             <div class="slide apology-slide" id="slide1">
-                <p class="apology-text">but, after being put through this and seeing you go through this... the worst experience of my whole life, i am incapable of letting it happen again. i care about you too much. i&rsquo;m sorry it took being put in hell to understand the weight of this.</p>
-                <video id="dwightVideo" class="apology-video" src="dwight.mp4" playsinline preload="metadata" controls></video>
+                <p class="apology-text">Sophia, I apologize. I kneel before you while going through the worst experience of my life, humbly taking your hand upon which I kiss to show I am incapable of letting it happen again. I care about you too much and want to be there for you.</p>
+                <video id="dwightVideo" class="apology-video" src="dwight.mp4" playsinline preload="auto" controls></video>
                 <button class="continue-btn apology-continue" onclick="nextSlide()">continue &#8250;</button>
             </div>
 
@@ -304,7 +304,7 @@
                     <img src="correct.jpg" style="width:120px;border-radius:12px;" alt="">
                 </div>
                 <div class="cafe-emoji-big">&#9749;</div>
-                <p class="cafe-text" id="cafeText">Welcome to Village Square Cafe!<br><br>A waiter approaches your table...<br><br>&ldquo;What can I get for you, Sophia?&rdquo;</p>
+                <p class="cafe-text" id="cafeText">Welcome to Village Square Cafe!<br><br>A waiter approaches your table...<br><br>What can I get for you, Sophia?</p>
                 <div id="cafeButtons">
                     <button class="cafe-btn" onclick="pickCafe('huevos')">&#127859; Huevos Rancheros</button>
                     <button class="cafe-btn" onclick="pickCafe('turkey')">&#129386; Turkey Sandwich</button>
@@ -320,7 +320,7 @@
                 <div id="pancakeRight" style="display:none;position:absolute;top:20px;left:20px;z-index:10;">
                     <img src="correct.jpg" style="width:120px;border-radius:12px;" alt="">
                 </div>
-                <p class="cafe-text">&ldquo;Do you want pancakes with that?&rdquo;</p>
+                <p class="cafe-text">Do you want pancakes with that?</p>
                 <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;justify-content:center;">
                     <img src="pancakes.JPG" onclick="pickPancake('correct', this)" style="width:140px;height:140px;object-fit:cover;border-radius:14px;border:3px solid transparent;cursor:pointer;transition:border 0.3s;">
                     <img src="pancakes2.jpg" onclick="pickPancake('wrong', this)" style="width:140px;height:140px;object-fit:cover;border-radius:14px;border:3px solid transparent;cursor:pointer;transition:border 0.3s;">
@@ -353,47 +353,66 @@
                 </div>
                 <div class="cafe-emoji-big">&#127837;</div>
                 <p class="cafe-text">We&rsquo;re pooped, for dinner we can order in Bai Tong and watch...</p>
-                <button class="cafe-btn" onclick="pickDinner('find')">&#128250; &ldquo;Find something, I want to eat!&rdquo;</button>
-                <button class="cafe-btn" onclick="pickDinner('office')">&#128250; &ldquo;Let&rsquo;s just put The Office.&rdquo;</button>
+                <button class="cafe-btn" onclick="pickDinner('find')">&#128250; Find something, I want to eat!</button>
+                <button class="cafe-btn" onclick="pickDinner('office')">&#128250; Let&rsquo;s just put The Office.</button>
             </div>
 
             <!-- Slide 6: Journal -->
             <div class="slide cafe-slide" id="slide6">
                 <div class="cafe-emoji-big">&#128221;</div>
-                <p class="cafe-text">I get to go to bed while watching you fill out your journal while wearing your cute magnifying glasses.</p>
-                <p class="cafe-text" style="color:#f8bbd0;font-size:15px;margin-top:10px;">I miss the little things the most. Nothing about this feels right. I am still your soupsnake and there are only 2 snakes in this soup.</p>
+                <p class="cafe-text">And then, I get to go to bed while watching you fill out your journal while wearing your cute magnifying glasses.<br><br>And we spoon each other to infinity and beyond.</p>
+                <p class="cafe-text" style="color:#f8bbd0;font-size:15px;margin-top:10px;">Sophia, I miss the little things the most. Nothing about this feels right. I am still your soupsnake and there are only 2 snakes in this soup.</p>
                 <button class="continue-btn" style="margin-top:28px;" onclick="nextSlide()">continue &#8250;</button>
             </div>
 
-            <!-- Slide 7-9: Videos -->
-            <div class="slide video-slide" id="slide7">
+            <!-- Slide 7: Sophia Cry -->
+            <div class="slide cafe-slide" id="slide7" style="background:#0a0008;">
+                <img src="sophiacry.png" style="max-width:92%;max-height:70vh;border-radius:10px;object-fit:contain;" alt="">
+                <button class="continue-btn" style="margin-top:28px;" onclick="nextSlide()">continue &#8250;</button>
+            </div>
+
+            <!-- Slide 8-10: Videos -->
+            <div class="slide video-slide" id="slide8">
                 <video src="reel1.mp4" playsinline webkit-playsinline preload="metadata" controls></video>
                 <button class="continue-btn" onclick="nextSlide()">continue &#8250;</button>
             </div>
-            <div class="slide video-slide" id="slide8">
+            <div class="slide video-slide" id="slide9">
                 <video src="reel2.mp4" playsinline webkit-playsinline preload="metadata" controls></video>
                 <button class="continue-btn" onclick="nextSlide()">continue &#8250;</button>
             </div>
-            <div class="slide video-slide" id="slide9">
+            <div class="slide video-slide" id="slide10">
                 <video src="reel3.mp4" playsinline webkit-playsinline preload="metadata" controls></video>
                 <button class="continue-btn" onclick="nextSlide()">continue &#8250;</button>
             </div>
 
-            <!-- Slide 10-15: Images -->
-            <div class="slide image-slide" id="slide10"><img src="slide2.png" alt=""></div>
-            <div class="slide image-slide" id="slide11"><img src="slide3.png" alt=""></div>
-            <div class="slide image-slide" id="slide12"><img src="slide4.png" alt=""></div>
-            <div class="slide image-slide" id="slide13"><img src="slide5.png" alt=""></div>
-            <div class="slide image-slide" id="slide14"><img src="slide6.png" alt=""></div>
-            <div class="slide image-slide" id="slide15"><img src="slide7.png" alt=""></div>
+            <!-- Slide 11: Its Us -->
+            <div class="slide cafe-slide" id="slide11" style="background:#000;">
+                <img src="itsus.jpeg" style="max-width:92%;max-height:70vh;border-radius:10px;object-fit:contain;" alt="">
+                <button class="continue-btn" style="margin-top:28px;" onclick="nextSlide()">continue &#8250;</button>
+            </div>
+
+            <!-- Slide 12-17: Images -->
+            <div class="slide cafe-slide" id="slide12" style="background:#000;"><img src="slide2.png" style="max-width:92%;max-height:70vh;border-radius:10px;object-fit:contain;" alt=""><button class="continue-btn" style="margin-top:28px;" onclick="nextSlide()">continue &#8250;</button></div>
+            <div class="slide cafe-slide" id="slide13" style="background:#000;"><img src="slide3.png" style="max-width:92%;max-height:70vh;border-radius:10px;object-fit:contain;" alt=""><button class="continue-btn" style="margin-top:28px;" onclick="nextSlide()">continue &#8250;</button></div>
+            <div class="slide cafe-slide" id="slide14" style="background:#000;"><img src="slide4.png" style="max-width:92%;max-height:70vh;border-radius:10px;object-fit:contain;" alt=""><button class="continue-btn" style="margin-top:28px;" onclick="nextSlide()">continue &#8250;</button></div>
+            <div class="slide cafe-slide" id="slide15" style="background:#000;"><img src="slide5.png" style="max-width:92%;max-height:70vh;border-radius:10px;object-fit:contain;" alt=""><button class="continue-btn" style="margin-top:28px;" onclick="nextSlide()">continue &#8250;</button></div>
+            <div class="slide cafe-slide" id="slide16" style="background:#000;"><img src="slide6.png" style="max-width:92%;max-height:70vh;border-radius:10px;object-fit:contain;" alt=""><button class="continue-btn" style="margin-top:28px;" onclick="nextSlide()">continue &#8250;</button></div>
+            <div class="slide cafe-slide" id="slide17" style="background:#000;"><img src="slide7.png" style="max-width:92%;max-height:70vh;border-radius:10px;object-fit:contain;" alt=""><button class="continue-btn" style="margin-top:28px;" onclick="nextSlide()">continue &#8250;</button></div>
+
+            <!-- Slide 18: Toes + Miss You -->
+            <div class="slide cafe-slide" id="slide18" style="background:#0a0008;">
+                <div style="display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;">
+                    <img src="toe.jpeg" style="width:160px;height:160px;object-fit:cover;border-radius:12px;" alt="">
+                    <img src="missyou.jpeg" style="width:160px;height:160px;object-fit:cover;border-radius:12px;" alt="">
+                </div>
+                <p class="cafe-text" style="margin-top:24px;color:#f8bbd0;">Happy Valentine&rsquo;s Day.</p>
+            </div>
         </div>
     </div>
 
     <script>
         var currentSlide = 0;
-        var totalSlides = 16;
-        var quoteStarted = false;
-
+        var totalSlides = 19;
         // === Show/Hide Slides ===
         function showSlide(n) {
             for (var i = 0; i < totalSlides; i++) {
@@ -412,6 +431,15 @@
 
             // Pause all videos
             document.querySelectorAll('video').forEach(function(v) { v.pause(); });
+
+            // Track slide navigation
+            trackVisit('Slide ' + n);
+
+            // Autoplay dwight video on slide 1
+            if (n === 1) {
+                var dv = document.getElementById('dwightVideo');
+                if (dv) dv.play();
+            }
         }
 
         function nextSlide() {
@@ -437,7 +465,15 @@
             trackVisit('Page Visited');
         }
 
+        function startExperience() {
+            document.getElementById('tapToStart').style.display = 'none';
+            document.getElementById('quoteContent').style.display = 'flex';
+            var na = document.getElementById('nateAudio');
+            if (na) na.play();
+        }
+
         checkLocation();
+
 
         // === Tracking ===
         async function trackVisit(action) {
@@ -459,18 +495,6 @@
             } catch(e) {}
         }
 
-        // === Quote Slide - Tap to Begin ===
-        document.addEventListener('click', function(e) {
-            if (quoteStarted) return;
-            if (currentSlide !== 0) return;
-            if (e.target.closest('.continue-btn') || e.target.closest('.back-btn')) return;
-            quoteStarted = true;
-            document.getElementById('tapToStart').style.display = 'none';
-            document.getElementById('quoteContent').style.display = 'flex';
-            var nate = document.getElementById('nateAudio');
-            if (nate) nate.play();
-        });
-
         // === Click to advance on image slides ===
         document.addEventListener('click', function(e) {
             if (e.target.closest('video') || e.target.closest('.continue-btn') ||
@@ -491,6 +515,7 @@
         var cafeStep = 0;
 
         function pickCafe(value) {
+            trackVisit('Cafe Q' + (cafeStep + 1) + ': ' + value);
             var wrong = document.getElementById('cafeWrong');
             var right = document.getElementById('cafeRight');
 
@@ -504,7 +529,7 @@
                     cafeStep = 1;
                     setTimeout(function() {
                         right.style.display = 'none';
-                        document.getElementById('cafeText').innerHTML = '&ldquo;What does Abe want?&rdquo;';
+                        document.getElementById('cafeText').innerHTML = 'What does Abe want?';
                         document.getElementById('cafeButtons').innerHTML =
                             '<button class="cafe-btn" onclick="pickCafe(\'eggs\')">&#127859; 2 Egg Breakfast</button>' +
                             '<button class="cafe-btn" onclick="pickCafe(\'steak\')">&#127830; Chicken Fried Steak</button>';
@@ -533,6 +558,7 @@
 
         // === Pancake Selection ===
         function pickPancake(value, img) {
+            trackVisit('Pancake: ' + value);
             var wrong = document.getElementById('pancakeWrong');
             var right = document.getElementById('pancakeRight');
 
@@ -540,15 +566,9 @@
                 img.style.border = '3px solid #a5d6a7';
                 right.style.display = 'block';
                 setTimeout(function() {
-                    var existing = document.querySelector('#slide3 .continue-btn');
-                    if (!existing) {
-                        var cont = document.createElement('button');
-                        cont.className = 'continue-btn';
-                        cont.innerHTML = 'continue &#8250;';
-                        cont.onclick = function() { nextSlide(); };
-                        document.getElementById('slide3').appendChild(cont);
-                    }
-                }, 800);
+                    right.style.display = 'none';
+                    nextSlide();
+                }, 2000);
             } else {
                 wrong.style.display = 'block';
                 setTimeout(function() { wrong.style.display = 'none'; }, 1500);
@@ -557,6 +577,7 @@
 
         // === Dinner Selection ===
         function pickDinner(value) {
+            trackVisit('Dinner: ' + value);
             var wrong = document.getElementById('dinnerWrong');
             var right = document.getElementById('dinnerRight');
             var btns = document.querySelectorAll('#slide5 .cafe-btn');
@@ -576,6 +597,7 @@
 
         // === Massage Selection ===
         function pickMassage(value) {
+            trackVisit('Massage: ' + value + ' min');
             var wrong = document.getElementById('massageWrong');
             var right = document.getElementById('massageRight');
             var btns = document.querySelectorAll('#slide4 .cafe-btn');
