@@ -435,11 +435,9 @@
             // Track slide navigation
             trackVisit('Slide ' + n);
 
-            // Autoplay dwight video on slide 1
-            if (n === 1) {
-                var dv = document.getElementById('dwightVideo');
-                if (dv) dv.play();
-            }
+            // Autoplay any video on the current slide
+            var vid = target ? target.querySelector('video:not(.quote-audio)') : null;
+            if (vid) vid.play();
         }
 
         function nextSlide() {
